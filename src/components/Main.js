@@ -1,8 +1,9 @@
 import { Layout, Input, Row, Col, } from 'antd';
+import ProductCard from './ProductCard';
 const { Header, Footer, Sider, Content } = Layout;
 const { Search } = Input;
 
-const Main = ({ userName }) => {
+const Main = ({ userName, products }) => {
   return(
     <Layout>
       <Header className="header">
@@ -21,7 +22,18 @@ const Main = ({ userName }) => {
         </Row>
       </Header>
       <Content className='content'>
-        <p style={{color: 'black'}}>Contenido</p>
+        <p>Basado en tu ultima visita:</p>
+        <Row>
+          {
+            products.map(prod => {
+              return(
+                <Col key={prod.id} xs={{ span: 24 }} lg={{ span: 8 }}>
+                  <ProductCard product={prod} />
+                </Col>
+              )
+            })
+          }
+        </Row>
       </Content>
       <Footer className='footer'>
         Pie
