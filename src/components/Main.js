@@ -23,11 +23,11 @@ const Main = ({ userName, products }) => {
       </Header>
       <Content className='content'>
         <p>Basado en tu ultima visita:</p>
-        <Row>
+        <Row className="products-container">
           {
             products.map(prod => {
               return(
-                <Col key={prod.id} xs={{ span: 24 }} lg={{ span: 8 }}>
+                <Col key={prod.id} xs={{ span: 24 }} lg={{ span: 4 }}>
                   <ProductCard product={prod} />
                 </Col>
               )

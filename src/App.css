@@ -114,6 +114,10 @@
   padding-bottom: 20px;
 }
 
+.products-container {
+  margin: 0 15%;
+}
+
 .footer {
   color: var(--text) !important;
   background-color: var(--details) !important;
@@ -122,6 +126,7 @@
 .product-card {
   background-color: var(--primary);
   padding: 15px;
+  margin: 20px;
 }
 
 .products-container {
