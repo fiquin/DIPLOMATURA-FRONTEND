@@ -9,7 +9,10 @@ const App = () => {
   useEffect(() => {
     fetch('http://localhost:4000/api/products')
       .then(response => response.json())
-      .then(data => setProducts(data))
+      .then(data => {
+        const filteredData = data.filter(prod => prod.imageUrl)
+        setProducts(filteredData)
+      })
   }, []);
 
   return (
