@@ -8,8 +8,10 @@ const Main = ({ userName, products }) => {
     <Layout>
       <Header className="header">
         <Row>
-          <Col xs={{ span: 5}} lg={{ span: 3 }}>Logo</Col>
-          <Col xs={{ span: 19}} lg={{ span: 16 }}>
+          <Col xs={{ span: 5}} lg={{ span: 6 }}>
+            <img className="logo" src="https://www.vhv.rs/dpng/d/509-5094883_retail-store-icon-pictures-to-pin-on-pinterest.png" alt="logo" />
+          </Col>
+          <Col xs={{ span: 19}} lg={{ span: 10 }}>
             <div className="header-search">
               <Search
                 placeholder='¿Que estás buscando?'

@@ -3,7 +3,7 @@ import './App.css';
 import Main from './components/Main';
 
 const App = () => {
-  const [ userName ] = useState('Federico');
+  const [ userName ] = useState('Alex');
   const [ products, setProducts ] = useState([]);
 
   useEffect(() => {
