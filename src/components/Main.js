@@ -6,7 +6,7 @@ import CustomFooter from './CustomFooter';
 import NewProduct from './NewProduct';
 
 const Main = ({ userName, products }) => {
-  const [ screen, setScreen ] = useState(0);
+  const [ screen, setScreen ] = useState(1);
 
   return(
     <Layout>

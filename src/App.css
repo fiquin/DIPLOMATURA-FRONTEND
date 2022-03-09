@@ -16,6 +16,20 @@
   color: black;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: row;
+}
+
+.label {
+  width: 200px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
