@@ -11,7 +11,7 @@ const CustomContent = ({ products, setScreen }) => (
         {
           products.map(prod => {
             return(
-              <Col key={prod.id} xs={{ span: 24 }} lg={{ span: 4 }}>
+              <Col key={prod.imageUrl} xs={{ span: 24 }} lg={{ span: 4 }}>
                 <ProductCard product={prod} />
               </Col>
             )
