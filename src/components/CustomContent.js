@@ -5,7 +5,7 @@ const { Content } = Layout;
 const CustomContent = ({ products, setScreen }) => (
   <>
     <Content className='content'>
-      <button className='button' onClick={() => setScreen(1)}>Nuevo producto</button>
+      <button className='button' onClick={() => setScreen(0)}>Nuevo producto</button>
       <p>Basado en tu ultima visita:</p>
       <Row className="products-container">
         {

@@ -4,11 +4,12 @@ const { Content } = Layout;
 
 const NewProduct = ({ setScreen }) => {
   const [ values, setValues ] = useState({
-    productName: '',
+    name: '',
     description: '',
     price: 0,
     imageUrl: ''
   });
+  const baseURL = 'http://localhost:4000/api';
   
   const handleChange = (event) => {
     event.preventDefault();
@@ -18,33 +19,52 @@ const NewProduct = ({ setScreen }) => {
     setValues(prev => ({...prev, [name]: value}))
   }
 
-  const handleSubmit = () => {
-    fetch('http://localhost:4000/api/products', {
-      method: 'POST',
-      body: JSON.stringify(values),
-      mode: 'no-cors',
-      headers: {
-        'Content-Type':'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
-    }).then(response => response.text())
-      .then(data => data ? JSON.parse(data) : {})
-      .catch(err => console.log("Error::::::::::::::: ", err));
-  };
+  const fortmatResponse = (res) => {
+    return JSON.stringify(res, null, 2);
+  }
 
-  console.log("🚀 :::::::::::: values", values);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch(`${baseURL}/products`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!res.ok) {
+        const message = `An error has occured: ${res.status} - ${res.statusText}`;
+        throw new Error(message);
+      }
+      const data = await res.json();
+      const result = {
+        status: res.status + "-" + res.statusText,
+        headers: {
+          "Content-Type": res.headers.get("Content-Type"),
+          "Content-Length": res.headers.get("Content-Length"),
+        },
+        data: data,
+      };
+      console.log("Result: ", fortmatResponse(result));
+    } catch (err) {
+      console.log("Error: ", err)
+    }
+  };
 
   return(
     <>
       <Content className='content'>
-        <button className='button' onClick={() => setScreen(0)}>Volver</button>
+        <button className='button' onClick={() => setScreen(1)}>Volver</button>
         <p>Ingresá tu producto</p>
         <Row className="products-container">
           <form onSubmit={handleSubmit}>
             <div className='form'>
               <div className="form-field">
-                <label htmlFor="productName" className="label">Nombre</label>
-                <input value={values.productName} onChange={handleChange} name="productName" style={{ color: 'black'}} type="text" />
+                <label htmlFor="name" className="label">Nombre</label>
+                <input value={values.name} onChange={handleChange} name="name" style={{ color: 'black'}} type="text" />
               </div>
               <div className="form-field">
                 <label htmlFor="description" className="label">Descripción</label>

@@ -12,7 +12,7 @@ const Main = ({ userName, products }) => {
     <Layout>
       <CustomHeader userName={userName} />
       {
-        screen === 0 ? (
+        screen === 1 ? (
           <CustomContent products={products} screen={screen} setScreen={setScreen} />
         ) : (
           <NewProduct screen={screen} setScreen={setScreen} />
