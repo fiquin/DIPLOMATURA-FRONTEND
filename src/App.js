@@ -7,7 +7,7 @@ const App = () => {
   const [ products, setProducts ] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/products')
+    fetch('https://diplomatura-backend-module.herokuapp.com/api/products')
       .then(response => response.json())
       .then(data => {
         const completedData = data.map(prod => {
